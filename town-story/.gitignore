@@ -8,3 +8,6 @@ sheet_a.jpg
 sheet_b.jpg
 beats.jpg
 out.mp4
+out_with_endcard.mp4
+endcard/*.mp4
+endcard/t*.jpg
