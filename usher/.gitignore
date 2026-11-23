@@ -17,3 +17,5 @@ frames*/
 snaps*/
 *.log
 *.mp4
+endcard/*.mp4
+endcard/t*.jpg
