@@ -107,7 +107,7 @@ while i < N:  # fill the few words the aligner skipped
     for k in range(i, j): dd = (e - s) * WT[k] / ww.sum(); T[k] = [t, t + dd]; t += dd
     i = j
 # tighten: the reference has no pause longer than ~0.08 s. Find truly silent stretches by energy, cut each down to MAXGAP, remap times.
-MAXGAP = 0.08; hop = int(sr * 0.01); env = np.sqrt(np.convolve(a * a, np.ones(hop * 2) / (hop * 2), 'same'))[::hop]; db = 20 * np.log10(env + 1e-7)
+MAXGAP = float(os.environ.get('MAXGAP', '0.08')); hop = int(sr * 0.01); env = np.sqrt(np.convolve(a * a, np.ones(hop * 2) / (hop * 2), 'same'))[::hop]; db = 20 * np.log10(env + 1e-7)
 quiet = np.append(db < np.percentile(db, 95) - 38, False); cuts = []; s0 = None
 for i, v in enumerate(quiet):
     if v and s0 is None: s0 = i
